@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product app</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<div class="nav-bar"></div>
+
+<div id="app">
+    <div id="product" class="product">
+
+        <div class="product-image">
+            <img v-bind:src="image">
+        </div>
+    
+        <div class="product-info">
+            <h1> <a :href="url">{{product }}</a> </h1>
+
+            <!-- if and else statements -->
+            <p v-if="inventory > 10">In Stock</p>
+            <p v-else-if="inventory <= 10 && inventory > 0">Almost Out</p>
+            <p v-else>Out of Stock</p>
+
+            <!-- show /hide  same as style= "display:none" -->
+            <p v-show="inStock">Promotion</p>
+
+            <ul>
+                <li v-for="detail in details"> {{ detail }} </li>
+            </ul>
+
+            <!-- for multiple items in list or array -->
+            <div v-for="variant in variants" 
+                :key="variant.variantId"
+                class="color-box"
+                :style="{ backgroundColor: variant.variantColor }"
+                @mouseover="updateProduct(variant.variantImage)">
+            </div>
+            <!-- v-on or the @ sign -->
+            <button v-on:click="addToCart">Add to Cart </button>
+
+            <div class="cart">
+                <p> Cart ({{ cart }})</p>
+
+            </div>
+
+
+        </div>
+
+        <!-- <h1>{{ product + " is clean" }}</h1> -->
+    </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
