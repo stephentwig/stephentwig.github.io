@@ -147,7 +147,7 @@ Vue.component('product-review', {
 
         <!-- For one way binding use v-bind -->
         <!-- For 2 two way bind use v-model -->
-        <form>
+        <form class="review-form">
         
         <p>
             <label for="rating">Rating</label>
@@ -162,13 +162,14 @@ Vue.component('product-review', {
             </select>
         </p>
         <p></p>
-            <input v-model="name">
+            <input v-model="name" id="name">
         <form>
     `,
     data() {
         return {
             name: null,
             review: null,
+            rating: null
         }
     }
 })
