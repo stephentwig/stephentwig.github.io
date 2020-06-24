@@ -149,9 +149,19 @@ Vue.component('product-review', {
         <!-- For 2 two way bind use v-model -->
         <form class="review-form">
         
+        
         <p>
-            <label for="rating">Rating</label>
-            <select name="" id="rating">
+            <label for="name">Name:</label>
+            <input v-model="name" id="name">
+        </p>
+        <p>
+            <label for="review">Review:</label>
+            <textarea name="review" id="review" v-model="review"></textarea>
+        </p>
+
+        <p>
+            <label for="rating">Rating:</label>
+            <select name="" id="rating" v-model.number="rating">
                 <option value="">5</option>
                 <option value="">4</option>
                 <option value="">3</option>
@@ -161,8 +171,11 @@ Vue.component('product-review', {
 
             </select>
         </p>
-        <p></p>
-            <input v-model="name" id="name">
+
+        <p>
+            <input type="submit" value="Submit" id="">
+        </p>
+        
         <form>
     `,
     data() {
