@@ -65,7 +65,20 @@ Vue.component('product', {
             >Remove from Cart </button>
         </div>
 
-        <product-review></product-review>
+        <div>
+            <h2>Reviews</h2>
+            <p v-if="!reviews.length">There are no reviews yet.</p>
+            <ul>
+                <li v-for="review in reviews">
+                   <p>{{ review.name }}</p>
+                   <p>{{ review.rating }}</p> 
+                   <p>{{ review.review }}</p>  
+
+                </li>
+            </ul>
+        </div>
+
+        <product-review @review-submitted="addReview"></product-review>
 
 
 
@@ -99,9 +112,9 @@ Vue.component('product', {
                     variantQuantity: 10
     
                 }
-            ]
+            ],
          
-            
+            reviews: []
         }
     },
          
@@ -118,6 +131,10 @@ Vue.component('product', {
             removeFromCart: function () {
                 this.$emit('remove-from-cart', this.variants[this.selectedVariant].variantId)
             },
+
+            addReview(productReview) {
+                this.reviews.push(productReview)
+            }
 
     },
     computed: {
@@ -147,42 +164,60 @@ Vue.component('product-review', {
 
         <!-- For one way binding use v-bind -->
         <!-- For 2 two way bind use v-model -->
-        <form class="review-form">
+        <!-- @submit.prevent makes the page not refresh -->
+        <form class="review-form" @submit.prevent="onSubmit">
         
         
-        <p>
-            <label for="name">Name:</label>
-            <input v-model="name" id="name">
-        </p>
-        <p>
-            <label for="review">Review:</label>
-            <textarea name="review" id="review" v-model="review"></textarea>
-        </p>
+            <p>
+                <label for="name">Name:</label>
+                <input v-model="name" id="name">
+            </p>
+            <p>
+                <label for="review">Review:</label>
+                <textarea name="review" id="review" v-model="review"></textarea>
+            </p>
 
-        <p>
-            <label for="rating">Rating:</label>
-            <select name="" id="rating" v-model.number="rating">
-                <option value="">5</option>
-                <option value="">4</option>
-                <option value="">3</option>
-                <option value="">2</option>
-                <option value="">1</option>
+            <p>
+                <label for="rating">Rating:</label>
+                <select name="rating" id="rating" v-model.number="rating">
+                    <option >5</option>
+                    <option >4</option>
+                    <option >3</option>
+                    <option >2</option>
+                    <option >1</option>
 
 
-            </select>
-        </p>
+                </select>
+            </p>
 
-        <p>
-            <input type="submit" value="Submit" id="">
-        </p>
-        
-        <form>
+            <p>
+                <input type="submit" value="Submit" >
+            </p>
+            
+        </form>
     `,
     data() {
         return {
             name: null,
             review: null,
             rating: null
+        }
+    },
+
+    methods: {
+        onSubmit() {
+            //to create a variable
+            let productReview = {
+                name : this.name,
+                review: this.review,
+                rating: this.rating
+            }
+
+            //to reset data after submitting
+            this.$emit('review-submitted', productReview)
+            this.name = null
+            this.review = null
+            this.rating = null
         }
     }
 })
