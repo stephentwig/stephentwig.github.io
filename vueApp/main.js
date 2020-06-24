@@ -166,7 +166,15 @@ Vue.component('product-review', {
         <!-- For 2 two way bind use v-model -->
         <!-- @submit.prevent makes the page not refresh -->
         <form class="review-form" @submit.prevent="onSubmit">
-        
+            
+
+            <p v-if="errors.length">
+                <b>Please correct the following error(s)</b>
+                <ul>
+                    <li v-for="error in errors">{{ error }}</li>
+                </ul>
+
+            </p>
         
             <p>
                 <label for="name">Name:</label>
@@ -200,24 +208,37 @@ Vue.component('product-review', {
         return {
             name: null,
             review: null,
-            rating: null
+            rating: null,
+            errors: []
         }
     },
 
     methods: {
         onSubmit() {
-            //to create a variable
+
+            //form validation check required fields
+            if(this.name && this.review && this.rating) {
+                //to create a variable
             let productReview = {
                 name : this.name,
                 review: this.review,
                 rating: this.rating
             }
-
+            
             //to reset data after submitting
             this.$emit('review-submitted', productReview)
             this.name = null
             this.review = null
             this.rating = null
+
+            
+            }
+            else {
+                if(!this.name) this.errors.push(" Name required.")
+                if(!this.rating) this.errors.push(" Rating required.")
+                if(!this.review) this.errors.push(" Review required.")
+            }
+
         }
     }
 })
