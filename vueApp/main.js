@@ -143,7 +143,34 @@ Vue.component('product', {
 })
 
 Vue.component('product-review', {
+    template:   `
 
+        <!-- For one way binding use v-bind -->
+        <!-- For 2 two way bind use v-model -->
+        <form>
+        
+        <p>
+            <label for="rating">Rating</label>
+            <select name="" id="rating">
+                <option value="">5</option>
+                <option value="">4</option>
+                <option value="">3</option>
+                <option value="">2</option>
+                <option value="">1</option>
+
+
+            </select>
+        </p>
+        <p></p>
+            <input v-model="name">
+        <form>
+    `,
+    data() {
+        return {
+            name: null,
+            review: null,
+        }
+    }
 })
 
 var app = new Vue ({
