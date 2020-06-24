@@ -135,6 +135,12 @@ var app = new Vue ({
     data: {
         premium: false,
         cart: 0
+    },
+
+    methods: {
+        updateCart() {
+            this.cart += 1
+        }
     }
 
 })
