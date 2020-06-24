@@ -1,3 +1,19 @@
+Vue.component('product-details',{
+    props: {
+        details:{
+            type: Array,
+            required: true
+        }
+    },
+    template: `
+       
+            <ul>
+                <li v-for="detail in details"> {{ detail }} </li>
+            </ul>
+        
+    `
+})      
+
 Vue.component('product', {
 
     props: {
@@ -26,9 +42,9 @@ Vue.component('product', {
         <!-- show /hide  same as style= "display:none" -->
         <!-- <p v-show="inStock">Promotion</p> -->
 
-        <ul>
-            <li v-for="detail in details"> {{ detail }} </li>
-        </ul>
+            <!-- add Vue component product details component -->  
+            
+            <product-details :details="details" ></product-details>
 
         <!-- for multiple items in list or array -->
         <div v-for="(variant, index) in variants" 
