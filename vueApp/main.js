@@ -1,3 +1,5 @@
+var eventBus = new Vue()
+
 Vue.component('product-details',{
     props: {
         details:{
@@ -26,67 +28,56 @@ Vue.component('product', {
         
     <div id="product" class="product">
 
-    <div class="product-image">
-        <img v-bind:src="image">
-    </div>
+            <div class="product-image">
+                <img v-bind:src="image">
+            </div>
 
-    <div class="product-info">
-        <h1> <a :href="url">{{ title }}</a> </h1>
+            <div class="product-info">
+                <h1> <a :href="url">{{ title }}</a> </h1>
 
-        <!-- if and else statements -->
-        <p v-if="inStock > 10">In Stock</p>
-        <p v-else-if="inStock <= 10 && inStock > 0">Almost Out of Stock</p>
-        <p v-else>Out of Stock</p>
-        <p> Shipping : {{ shipping }}</p>
+                <!-- if and else statements -->
+                <p v-if="inStock > 10">In Stock</p>
+                <p v-else-if="inStock <= 10 && inStock > 0">Almost Out of Stock</p>
+                <p v-else>Out of Stock</p>
+                <p> Shipping : {{ shipping }}</p>
 
-        <!-- show /hide  same as style= "display:none" -->
-        <!-- <p v-show="inStock">Promotion</p> -->
+                <!-- show /hide  same as style= "display:none" -->
+                <!-- <p v-show="inStock">Promotion</p> -->
 
-            <!-- add Vue component product details component -->  
+                    <!-- add Vue component product details component -->  
+                
+                    <product-details :details="details" ></product-details>
+
+                <!-- for multiple items in list or array -->
+                <div v-for="(variant, index) in variants" 
+                    :key="variant.variantId"
+                    class="color-box"
+                    :style="{ backgroundColor: variant.variantColor }"
+                    @mouseover="updateProduct(index)">
+                </div>
+                
+                <div>
+                    <!-- v-on or the @ sign -->
+                    <button v-on:click="addToCart"
+                            :disabled="!inStock"
+                            :class="{ disabledButton: !inStock }">Add to Cart </button>
+
+                    <button v-on:click="removeFromCart"
+                    
+                    >Remove from Cart </button>
+                </div>
+
+                <product-tabs :reviews="reviews"></product-tabs>
+
             
-            <product-details :details="details" ></product-details>
 
-        <!-- for multiple items in list or array -->
-        <div v-for="(variant, index) in variants" 
-            :key="variant.variantId"
-            class="color-box"
-            :style="{ backgroundColor: variant.variantColor }"
-            @mouseover="updateProduct(index)">
-        </div>
-        
-        <div>
-            <!-- v-on or the @ sign -->
-            <button v-on:click="addToCart"
-                    :disabled="!inStock"
-                    :class="{ disabledButton: !inStock }">Add to Cart </button>
 
-            <button v-on:click="removeFromCart"
+
             
-            >Remove from Cart </button>
-        </div>
-
-        <div>
-            <h2>Reviews</h2>
-            <p v-if="!reviews.length">There are no reviews yet.</p>
-            <ul>
-                <li v-for="review in reviews">
-                   <p>{{ review.name }}</p>
-                   <p>{{ review.rating }}</p> 
-                   <p>{{ review.review }}</p>  
-
-                </li>
-            </ul>
-        </div>
-
-        <product-review @review-submitted="addReview"></product-review>
-
-
-
-    </div>
 
     <!-- <h1>{{ product + " is clean" }}</h1> -->
 </div>
-
+</div>
     `,
     data() {
         return {
@@ -130,10 +121,6 @@ Vue.component('product', {
 
             removeFromCart: function () {
                 this.$emit('remove-from-cart', this.variants[this.selectedVariant].variantId)
-            },
-
-            addReview(productReview) {
-                this.reviews.push(productReview)
             }
 
     },
@@ -155,6 +142,15 @@ Vue.component('product', {
             return 2.99
         }
 
+    },
+
+    //lifcycle hook called mounted
+    //code you want to run as soon as the event is mounted
+
+    mounted() {
+        eventBus.$on('review-submitted', productReview => {
+            this.reviews.push(productReview)
+        })
     }
 
 })
@@ -226,7 +222,7 @@ Vue.component('product-review', {
             }
             
             //to reset data after submitting
-            this.$emit('review-submitted', productReview)
+            eventBus.$emit('review-submitted', productReview)
             this.name = null
             this.review = null
             this.rating = null
@@ -238,6 +234,56 @@ Vue.component('product-review', {
                 if(!this.rating) this.errors.push(" Rating required.")
                 if(!this.review) this.errors.push(" Review required.")
             }
+
+        }
+    }
+})
+
+Vue.component('product-tabs', {
+
+    props: {
+        reviews: {
+            type: Array,
+            required: true
+        }
+    },
+    template: `
+
+            <div>
+                 <hr>
+                <span class="tab"
+                        :class="{ activeTab: selectedTab === tab }"
+                        v-for="(tab, index) in tabs" 
+                        :key="index"
+                        @click="selectedTab = tab"
+                        >
+                        {{ tab }} </span>
+           
+
+            <div v-show="selectedTab === 'Reviews'">
+                    
+            <p v-if="!reviews.length">There are no reviews yet.</p>
+                    <ul>
+                        <li v-for="review in reviews">
+                        <p>{{ review.name }}</p>
+                        <p>{{ review.rating }}</p> 
+                        <p>{{ review.review }}</p>  
+
+                        </li>
+                    </ul>
+            </div>
+            <product-review v-show="selectedTab === 'Make a Review'"
+            ></product-review>
+        </div>
+     
+
+    `,
+
+    data() {
+
+        return {
+            tabs: ['Reviews', 'Make a Review'],
+            selectedTab: 'Reviews'
 
         }
     }
