@@ -3,25 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product app</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Stephen Sarpong-Sei - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #1f4037, #99f2c8);
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ff9800;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #fff;
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+        .section-title {
+            border-bottom: 4px solid #ff9800;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            border-radius: 30px 30px 0 0;
+            margin-top: 40px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    
-<div class="nav-bar"></div>
 
-<div id="app">
-    <div class="cart">
-        <p> Cart ({{ cart.length }})</p>
+<header>
+    <h1>Stephen Sarpong-Sei</h1>
+    <p>Solution-Oriented Full-Stack Software Engineer | Project Manager</p>
+</header>
 
-    </div>
+<nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-    <product :premium="premium" @add-to-cart="updateCart" @remove-from-cart="deleteFromCart"></product>
-    
-</div>
+<section id="about">
+    <img src="stephen_profilePic.jpg" alt="Stephen Sarpong-Sei" style="width:150px; height:150px; border-radius:50%; margin: 20px auto; display:block;">
+    <h2 class="section-title">About Me</h2>
+    <p>Solution-oriented full-stack software engineer and project manager with a demonstrated history of working in the IT industry, including banking, telecommunications, and e-commerce. I bring diverse knowledge and international experience from the USA, Ghana, Nigeria, South Africa, and Sri Lanka. Currently pursuing an M.S. in Information Technology at Worcester Polytechnic Institute (WPI) with a GPA of 4.0.</p>
+</section>
 
+<section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <ul>
+        <li>Languages: Python, PHP, JavaScript, HTML, CSS</li>
+        <li>Frameworks & Libraries: React, Flask, Angular, Laravel</li>
+        <li>Tools: Git, Linux, Tableau</li>
+        <li>Databases: PostgreSQL, MySQL</li>
+    </ul>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="main.js"></script>
+<section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <ul>
+        <li><strong>Code Ninjas, Northborough, MA (Aug 2024 - Present):</strong> Teaching programming concepts to students and maintaining personalized progress reports for over 15 students weekly.</li>
+        <li><strong>Graduate Assistant - Worcester Polytechnic Institute, Worcester, MA (Sep 2023 - Present):</strong> Developed web applications to enhance research visibility and integrated Google Analytics for traffic analysis.</li>
+        <li><strong>Banking Software Consultant - Inlaks (Nov 2022 - Aug 2023):</strong> Led deployment of Anti-Money Laundering software for 140+ rural banks and trained 20+ staff on new systems.</li>
+        <li><strong>Full Stack Developer - Inlaks (Sep 2018 - Nov 2021):</strong> Automated processes to reduce task times and developed APIs for Temenos Core Banking applications.</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <ul>
+        <li><strong>TwigaByte POS:</strong> Designed a Point of Sale web application to manage inventory, sales, and expenses using Bootstrap, ChartJS, PHP, and MySQL. For more details, visit <a href="https://unruly-keeper-ff7.notion.site/Stephen-Sarpong-Sei-s-Point-of-Sale-POS-Software-TwigaByte-POS-software-176b6976ddb9807b8fead2480aaf5c72" target="_blank">TwigaByte POS Details</a>.
+        <img src="twigabyte_pos_dashboard.png" alt="TwigaByte POS" style="width:100%; border-radius:15px; margin-top:10px;">
+    </li>
+    </ul>
+</section>
+
+<section id="research">
+    <h2 class="section-title">Research & Presentations</h2>
+    <p>Explore my contributions and presentations on <a href="https://www.researchgate.net/profile/Stephen-Sarpong-Sei" target="_blank">ResearchGate</a>.</p>
+    <ul>
+        <li><strong>Performing Data Analysis on LinkedIn Dataset Using Python Programming:</strong> Presented in June 2024, DOI: <a href="https://doi.org/10.13140/RG.2.2.33980.86405" target="_blank">10.13140/RG.2.2.33980.86405</a>. Conducted data analysis using Python packages (pandas, scikit-learn, seaborn, matplotlib) to explore anonymized LinkedIn datasets. Objectives included:
+            <ul>
+                <li>Determining the best place to work based on tenure length and emotional happiness index.</li>
+                <li>Analyzing relationships among followers, tenure length, and age.</li>
+                <li>Predicting employee attrition using the dataset.</li>
+                <li>Correlating attractiveness with beauty, skin health, face quality, and age.</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <p>Phone: 774-525-9262</p>
+    <p>Email: <a href="mailto:sarpongsei@gmail.com">sarpongsei@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/sarpongsei/" target="_blank">linkedin.com/in/sarpongsei</a></p>
+    <p>GitHub: <a href="https://github.com/stephentwig" target="_blank">github.com/stephentwig</a></p>
+    <p>Linktree: <a href="https://linktr.ee/stephentwig" target="_blank">linktr.ee/stephentwig</a></p>
+</section>
+
+<footer>
+    <p>&copy; 2025 Stephen Sarpong-Sei. All Rights Reserved.</p>
+</footer>
+
 </body>
 </html>
