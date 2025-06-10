@@ -98,16 +98,75 @@
       from { opacity: 0; transform: scale(0.8); }
       to { opacity: 1; transform: scale(1); }
     }
+
+    .program-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #a0522d, #d2691e);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  animation: fadeIn 2.5s ease-in-out;
+}
+
+.program-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #d2691e, #a0522d);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.song-buttons {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  animation: fadeIn 3s ease-in-out;
+}
+
+.song-button {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #6b4c3b, #a0522d);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.song-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #a0522d, #6b4c3b);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+
   </style>
 </head>
 <body>
   <header>
     <h1>Kesia & Stephen</h1>
     <h2>Wedding Seating Chart & Program - ❤️ June 11, 2025 ❤️</h2>
+    <a href="kesiaandstephenprogram.pdf" target="_blank" class="program-button">💌 View Wedding Program (PDF)</a>
+
   </header>
 
+  <div class="song-buttons">
+  <a href="https://www.jw.org/en/library/music-songs/sing-out-joyfully/131-what-god-yoked-together/" target="_blank" class="song-button">🎵 Song 131: What God Yoked Together</a>
+  <a href="https://www.jw.org/en/library/music-songs/sing-out-joyfully/132-now-we-are-one/" target="_blank" class="song-button">🎶 Song 132: Now We Are One</a>
+</div>
+
+
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search for a name..." />
+    <input type="text" id="searchInput" placeholder="Search using first or last name..." />
   </div>
   <div class="search-result" id="searchResult"></div>
 
@@ -115,7 +174,7 @@
 
   <script>
     const data = [
-      ["Kesia Baah (My Precious One) 👰🏾‍♀️💍","Stephen Sarpong-Sei "],
+      ["Kesia Baah(My Precious One)👰🏾‍♀️💍","Stephen Sarpong-Sei "],
       ["Prince Asiamah", "Diana Asiamah", "Abigail Asamoah ", "Nathaniel Asamoah", "Christiana Tua", "Isaac Tua", "Kesia Agyapong ", "Phil Agyapong", "Ernest Aboagye ", "Deborah Aboagye","Pearl Aboagye ***", "Dionne Aboagye ***", "Persis Asamoah"],
       ["Nana Opare ", "Angela Opare", "Daniel Addy", "Hilda Addy ", "Donald Addy ***", "Queenie Addy ***", "Icon Addy ***", "Margaret Owusu Ansah", "Abraham Armarboye ", "Brianna Owusu Ansah "],
       ["Maud Addai ", "Moses Addai", "Fredrick Omane", "Patience Omane", "Emmanuel Ndebeh", "Michelle Addai ", "Precious Okwuse", "Bobby Brown", "Mrs Brown", "Chris Dotse"],
@@ -123,10 +182,10 @@
       ["Priscilla Antwi ", "Prince Antwi ", "Ethan Antwi***", "Hagar Dade ", "Daniel Dade ", "Daryl Dade***", "Kofi Fynn ", "Aba Fynn ", "Liam Fynn***", "Dennis Baah ", "Antoinette Baah"],
       ["Vida Baah 💕", "Osei Baah 🕺🏾", "Michael Antwi ", "Levi Gery Antwi***", "Persis Asaam", "Allan Asaam", "Regina Berkyie ", "David Dade ", "Katelyn Dade***", "Liz Mensah","Audrey Dade","Joshua Dade"],
       ["Bishop Sarpong-Sei🕺🏾", "Mary Sarpong-Sei 💕", "Agartha Sarpong-Sei", "Lawrence K. Frimpong ", "Nana Yaw Oppong ", "Mrs. Amonoo Oppong", "Alex Ohene","Helen Ohene ", "Charlene Frimpong","Albert Peprah","Oszias Afriye"],
-      ["Samantha Gardener ", "Daniel Agyei ", "Jessica Wiredu", "Queenie Wiredu", "Joseph Amissah", "Kwabena Adu-Poku", "Susana Boakye", "Kwadwo Boakye","Shamira Nambafu", "Beah Cargoe ", "Berthnie Francois"],
-      ["Mr Owusu Afriyie ", "Mrs Owusu Afriyie", "Ntiamoah Kwarteng", "Michael Kwarteng ", "Irene Barfoe", "Justin Kwarteng ***", "Terry Kwarteng ", "Kaitlyn Kwarteng ***", "Aba Minnah", "Anthony Minnah Junior","Gify Adu", "Lucy Adu"],
+      ["Samantha Gardener ", "Daniel Agyei ", "Jessica Wiredu", "Queenie Wiredu", "Joseph Amissah", "Kwabena Adu-Poku", "Susana Boakye", "Kwadwo Boakye","Shamira Nambafu", "Beah Cargoe ", "Berthnie Francois", "Ntiamoah Kwarteng"],
+      ["Mr Owusu Afriyie ", "Mrs Owusu Afriyie", "Michael Kwarteng ", "Irene Barfoe", "Justin Kwarteng ***", "Terry Kwarteng ", "Kaitlyn Kwarteng ***", "Aba Minnah", "Anthony Minnah Junior","Gifty Adu", "Lucy Adu"],
       ["Hiram Adukusi ", "Loretta Adukusi", "Eddie Arthur ", "Samantha Arthur", "Gina Boye ", "Prince Boye", "Janae Boye ***", "Aaron Boye ***", "Kwaku Danso", "Evelyn Danso","Yaw Danso","Lashaunda Danso","Kwaku Danso","Freda Osei Akoto"],
-      ["Maame Pomaah Amoakohene", "Akwasi Asante Amoakohene", "Maame Kra Amoakohene***", "Sonia Seddor", "Gershon Seddor", "Nat Doku", "Timothy Addai", "Dawn Addai ", "Nicholas Oppong Abebrese", "Angelstar Nketia"],
+      ["Maame Pomaah Amoakohene", "Akwasi Asante Amoakohene", "Maame Kra Amoakohene***", "Sonia Seddor", "Gershon Seddor", "Nat Doku", "Timothy Addai", "Dawn Addai ","Lois Hammond","Justice Hammond","Nicholas Oppong Abebrese", "Angelstar Nketia"],
       ["Pedel Owusu Dartey", "Jason Owusu Dartey ***", "Gertrude Ntim", "Exta Tweneboa ", "Kwabena Tweneboa", "Corey Ntim ", "Thaddeaus Tweneboa ", "Kylian Tweneboa ", "Candace Ntim ", "Nana Yaw Owusu Dartey","Nicholas Oppong Abebrese Sr. "] ,
       ["Ken Yeboah ", "Barbara Yeboah", "Seth Akonnor Adjei ", "Esther Adjei ", "Brian Adjei ", "Kayla Adjei ", "Tara Ampofo ", "Sampson Ampofo", "Mavis Lamptey", "Victoria Bamfo"],
       ["Vanessa Afrane", "Anthony Afrane", "Hezekiah Afrane ", "Derrick Mireku", "Francis Mireku", "Godfred Mireku", "Benjamin Kusi","Nana Agyemang", "Obadiah Turkson", "Millicent Osei Poku","Sam Osei Poku","Lilian Osei Poku"],
