@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <metaarset="UTF-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stephen & Kesia Wedding Seatingart</title>
+  <title>Stephen & Kesia Wedding Seating Chart and Wedding Program</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -31,6 +31,24 @@
       margin-top: 0.5rem;
       color: #6b4c3b;
       animation: fadeIn 2s ease-in-out;
+    }
+    .search-box {
+      text-align: center;
+      margin: 1rem;
+    }
+    .search-box input {
+      padding: 0.5rem;
+      width: 250px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .search-result {
+      text-align: center;
+      font-weight: bold;
+      color: #6b4c3b;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
     }
     .tables {
       display: flex;
@@ -84,42 +102,74 @@
 </head>
 <body>
   <header>
-    <h1>Stephen & Kesia</h1>
-    <h2>Wedding Seatingart - June 11, 2025</h2>
+    <h1>Kesia & Stephen</h1>
+    <h2>Wedding Seating Chart & Program - ❤️ June 11, 2025 ❤️</h2>
   </header>
-  <div class="tables">
-    
-    <!-- Seatingart dynamically populated -->
-    
-    <script>
-      const data = [
-        ["Kesia Baah (My Precious One)","Stephen Sarpong-Sei "],
-        ["Prince Asiamah", "Diana Asiamah", "Abigail Asamoah ", "Nathaniel Asamoah", "Christiana Tua", "Isaac Tua", "Kesia Agyapong ", "Phil Agyapong", "Ernest Aboagye ", "Deborah Aboagye","Pearl Aboagye ***", "Dionne Aboagye ***", "Persis Asamoah"],
-        ["Nana Opare ", "Angela Opare", "Daniel Addy", "Hilda Addy ", "Donald Addy ***", "Queenie Addy ***", "Icon Addy ***", "Margaret Owusu Ansah", "Abraham Armarboye ", "Brianna Owusu Ansah "],
-        ["Maud Addai ", "Moses Addai", "Fredrick Omane", "Patience Omane", "Emmanuel Ndebeh", "Michelle Addai ", "Precious Okwuse", "Bobby Brown", "Mrs Brown", "Chris Dotse"],
-        ["Linda Oppong Amoako", "Ellis Oppong Amoako", "Jadorah Oppong Amoako ***", "Nariah Oppong Amoako ***", "Rita safo ", "Danica safo ", "Lydia Appiah ", "Leanna Appiah ", "Ruthanne Appiah ", "Juliet Annan"],
-        ["Priscilla Antwi ", "Prince Antwi ", "Ethan Antwi***", "Hagar Dade ", "Daniel Dade ", "Daryl Dade***", "Kofi Fynn ", "Aba Fynn ", "Liam Fynn***", "Dennis Baah ", "Antoinette Baah"],
-        ["Vida Baah ", "Osei Baah ", "Michael Antwi ", "Levi Gery Antwi***", "Persis Asaam", "Allan Asaam", "Regina Berkyie ", "David Dade ", "Katelyn Dade***", "Liz Mensah"],
-        ["Bishop Sarpong-Sei ", "Mary Sarpong-Sei ", "Agartha Sarpong-Sei", "Kwabena Owusu Korkor ", "Akua Owusu Korkor", "Lawrence K. Frimpong ", "Nana Yaw Oppong ", "Mrs. Amonoo Oppong", "Helen Ohene ", "Louisa Frimpong"],
-        ["Samantha Gardener ", "Daniel Agyei ", "Jessica Wiredu", "Queenie Wiredu", "Joseph Amissah", "Kwabena Adu-Poku", "EMPTY", "Shamira Nambafu", "Beah Cargoe ", "Anthony Minnah Junior"],
-        ["Mr Owusu Afriyie ", "Mrs Owusu Afriyie", "Ntiamoah Kwarteng", "Michael Kwarteng ", "Irene Barfoe", "Justin Kwarteng ***", "Terry Kwarteng ", "Kaitlyn Kwarteng ***", "Aba Minnah", "Evelyn Danso "],
-        ["Hiram Adukusi ", "Loretta Adukusi", "Eddie Arthur ", "Samantha Arthur", "Gina Boye ", "Prince Boye", "Janae Boye ***", "Aaron Boye ***", "Kwaku Danso", "Justice Hammond"],
-        ["Maame Pomaah Amoakohene", "Akwasi Asante Amoakohene", "Maame Kra Amoakohene***", "Sonia Seddor", "Gershon Seddor", "Nat Doku", "Timothy Addai", "Dawn Addai ", "Nicholas Oppong Abebrese", "Nicholas Oppong Abebrese Sr. "],
-        ["Pedel Owusu Dartey", "Jason Owusu Dartey ***", "Gertrude Ntim", "Exta Tweneboa ", "Kwabena Tweneboa", "Corey Ntim ", "Thaddeaus Tweneboa ", "Kylian Tweneboa ", "Candace Ntim ", ""] ,
-        ["Ken Yeboah ", "Barbara Yeboah", "Seth Akonnor Adjei ", "Esther Adjei ", "Brian Adjei ", "Kayla Adjei ", "Esther Walker ", "Zebra Walker", "", "Millicent Osei Poku"],
-        ["Vanessa Afrane", "Anthony Afrane", "Hezekiah Afrane ", "Derrick Mireku", "Francis Mireku", "Godfred Mireku", "Serwaa Mireku ", "Benjamin Kusi", "Obediah Turkson", "Gladys Otoo"],
-        ["Grace Nyamekye", "Hannah Quayson ", "Mavis Lamptey ", "Victoria Bamfo ", "Eugene Oppong", "Miriam Oppong", "Stella Dugan ", "John Dugan", "Jacob Asante ", "Collins Boadu"]
-      ];
 
-      const container = document.querySelector('.tables');
-      data.forEach((names, i) => {
-        const div = document.createElement('div');
-        div.className = 'table-card';
-        div.innerHTML = `<div class="table-title">Table ${i}</div><ul>${names.map(name => `<li>${name}</li>`).join('')}</ul>`;
-        container.appendChild(div);
-      });
-    </script>
-
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search for a name..." />
   </div>
+  <div class="search-result" id="searchResult"></div>
+
+  <div class="tables"></div>
+
+  <script>
+    const data = [
+      ["Kesia Baah (My Precious One) 👰🏾‍♀️💍","Stephen Sarpong-Sei "],
+      ["Prince Asiamah", "Diana Asiamah", "Abigail Asamoah ", "Nathaniel Asamoah", "Christiana Tua", "Isaac Tua", "Kesia Agyapong ", "Phil Agyapong", "Ernest Aboagye ", "Deborah Aboagye","Pearl Aboagye ***", "Dionne Aboagye ***", "Persis Asamoah"],
+      ["Nana Opare ", "Angela Opare", "Daniel Addy", "Hilda Addy ", "Donald Addy ***", "Queenie Addy ***", "Icon Addy ***", "Margaret Owusu Ansah", "Abraham Armarboye ", "Brianna Owusu Ansah "],
+      ["Maud Addai ", "Moses Addai", "Fredrick Omane", "Patience Omane", "Emmanuel Ndebeh", "Michelle Addai ", "Precious Okwuse", "Bobby Brown", "Mrs Brown", "Chris Dotse"],
+      ["Linda Oppong Amoako", "Ellis Oppong Amoako", "Jadorah Oppong Amoako ***", "Nariah Oppong Amoako ***", "Rita safo ", "Danica safo ", "Lydia Appiah ", "Leanna Appiah ", "Ruthanne Appiah ", "Evelyn Boateng","Juliet Annan","Vida Boamah"],
+      ["Priscilla Antwi ", "Prince Antwi ", "Ethan Antwi***", "Hagar Dade ", "Daniel Dade ", "Daryl Dade***", "Kofi Fynn ", "Aba Fynn ", "Liam Fynn***", "Dennis Baah ", "Antoinette Baah"],
+      ["Vida Baah 💕", "Osei Baah 🕺🏾", "Michael Antwi ", "Levi Gery Antwi***", "Persis Asaam", "Allan Asaam", "Regina Berkyie ", "David Dade ", "Katelyn Dade***", "Liz Mensah","Audrey Dade","Joshua Dade"],
+      ["Bishop Sarpong-Sei🕺🏾", "Mary Sarpong-Sei 💕", "Agartha Sarpong-Sei", "Lawrence K. Frimpong ", "Nana Yaw Oppong ", "Mrs. Amonoo Oppong", "Alex Ohene","Helen Ohene ", "Charlene Frimpong","Albert Peprah","Oszias Afriye"],
+      ["Samantha Gardener ", "Daniel Agyei ", "Jessica Wiredu", "Queenie Wiredu", "Joseph Amissah", "Kwabena Adu-Poku", "Susana Boakye", "Kwadwo Boakye","Shamira Nambafu", "Beah Cargoe ", "Berthnie Francois"],
+      ["Mr Owusu Afriyie ", "Mrs Owusu Afriyie", "Ntiamoah Kwarteng", "Michael Kwarteng ", "Irene Barfoe", "Justin Kwarteng ***", "Terry Kwarteng ", "Kaitlyn Kwarteng ***", "Aba Minnah", "Anthony Minnah Junior","Gify Adu", "Lucy Adu"],
+      ["Hiram Adukusi ", "Loretta Adukusi", "Eddie Arthur ", "Samantha Arthur", "Gina Boye ", "Prince Boye", "Janae Boye ***", "Aaron Boye ***", "Kwaku Danso", "Evelyn Danso","Yaw Danso","Lashaunda Danso","Kwaku Danso","Freda Osei Akoto"],
+      ["Maame Pomaah Amoakohene", "Akwasi Asante Amoakohene", "Maame Kra Amoakohene***", "Sonia Seddor", "Gershon Seddor", "Nat Doku", "Timothy Addai", "Dawn Addai ", "Nicholas Oppong Abebrese", "Angelstar Nketia"],
+      ["Pedel Owusu Dartey", "Jason Owusu Dartey ***", "Gertrude Ntim", "Exta Tweneboa ", "Kwabena Tweneboa", "Corey Ntim ", "Thaddeaus Tweneboa ", "Kylian Tweneboa ", "Candace Ntim ", "Nana Yaw Owusu Dartey","Nicholas Oppong Abebrese Sr. "] ,
+      ["Ken Yeboah ", "Barbara Yeboah", "Seth Akonnor Adjei ", "Esther Adjei ", "Brian Adjei ", "Kayla Adjei ", "Tara Ampofo ", "Sampson Ampofo", "Mavis Lamptey", "Victoria Bamfo"],
+      ["Vanessa Afrane", "Anthony Afrane", "Hezekiah Afrane ", "Derrick Mireku", "Francis Mireku", "Godfred Mireku", "Benjamin Kusi","Nana Agyemang", "Obadiah Turkson", "Millicent Osei Poku","Sam Osei Poku","Lilian Osei Poku"],
+      ["Grace Nyamekye", "Hannah Quayson ", "Mavis Lamptey ", "Victoria Bamfo ", "Eugene Oppong", "Miriam Oppong", "Stella Dugan ", "John Dugan", "Gladys Otoo","Janet Thornton","Natasha Thornton","Owura Amoakohene"],
+      ["Gaston Acheampong", "Samuel Gyasi","Louis Appiah","Nicky Adrian Antwi","Jayden Appau","Jayden Thornton","Christopher Owusu","Denzel Appiah","Jacob Asante","Collins Boadu","Marvin Dugan","Martin Dugan"]
+    ];
+
+    const container = document.querySelector('.tables');
+    const resultDiv = document.getElementById('searchResult');
+    const input = document.getElementById('searchInput');
+
+    // Render all tables
+    data.forEach((names, i) => {
+      const div = document.createElement('div');
+      div.className = 'table-card';
+      div.innerHTML = `<div class="table-title">Table ${i}</div><ul>${names.map(name => `<li>${name}</li>`).join('')}</ul>`;
+      container.appendChild(div);
+    });
+
+    // Search functionality
+    input.addEventListener('input', () => {
+      const query = input.value.toLowerCase().trim();
+      let found = false;
+
+      for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data[i].length; j++) {
+          if (data[i][j].toLowerCase().includes(query)) {
+            resultDiv.textContent = `✅ "${data[i][j]}" is at Table ${i}`;
+            found = true;
+            break;
+          }
+        }
+        if (found) break;
+      }
+
+      if (!found && query !== '') {
+        resultDiv.textContent = `❌ No match found for "${query}"`;
+      }
+
+      if (query === '') {
+        resultDiv.textContent = '';
+      }
+    });
+  </script>
 </body>
 </html>
